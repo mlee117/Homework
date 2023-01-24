@@ -1,4 +1,5 @@
 import math
+
 # 24gc.py
 
 # Write a program that computes the GC% of a DNA sequence
@@ -10,10 +11,10 @@ target = 0
 seq = 0
 
 for i in range(len(dna)):
-    if dna[i] == "G" or dna[i] == "C":
-        target += 1
-    seq += 1
-gc = math.ceil((target/seq)*100)/100
+	if dna[i] == "G" or dna[i] == "C":
+		target += 1
+	seq += 1
+gc = math.ceil((target / seq) * 100) / 100
 
 print(gc)
 

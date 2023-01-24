@@ -6,14 +6,14 @@
 
 # Note: you may not import math or any other library
 
-n = 5 # use this value for your computation
+n = 5  # use this value for your computation
 
 total = 0
 facto = 1
 
-for i in range(1, n+1):
-    total = total + i
-    facto = facto * i
+for i in range(1, n + 1):
+	total = total + i
+	facto = facto * i
 print(n, total, facto)
 
 """
