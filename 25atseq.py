@@ -18,19 +18,16 @@ for length in range(nt):
 	r = random.randint(1, 100)
 	if 1 <= r <= 30:
 		dna += 'A'
+		target += 1
 	elif 31 <= r <= 60:
 		dna += 'T'
+		target += 1
 	elif 61 <= r <= 80:
 		dna += 'C'
 	else:
 		dna += 'G'
 
-for i in range(len(dna)):
-	if dna[i] == "A" or dna[i] == "T":
-		target += 1
-at = target/nt
-
-print(nt, at, dna)
+print(nt, target/nt, dna)
 
 """
 python3 25atseq.py
