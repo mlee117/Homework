@@ -13,7 +13,6 @@ random.seed()
 nt = 30
 dna = ''
 target = 0
-total = 0
 
 for length in range(nt):
 	r = random.randint(1, 100)
@@ -23,16 +22,15 @@ for length in range(nt):
 		dna += 'T'
 	elif 61 <= r <= 80:
 		dna += 'C'
-	elif 81 <= r <= 100:
+	else:
 		dna += 'G'
 
 for i in range(len(dna)):
 	if dna[i] == "A" or dna[i] == "T":
 		target += 1
-	total += 1
-at = target/total
+at = target/nt
 
-print(total, at, dna)
+print(nt, at, dna)
 
 """
 python3 25atseq.py
