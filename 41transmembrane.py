@@ -33,19 +33,18 @@ def kd_Calc(seq):
 			if i == j[0]:
 				total += j[1]
 		avg = total/len(seq)
-	yield avg
+	return avg
 
 def hydro_Alpha_Helix(seq2, win, limit):
-	alpha = False
 	for i in range(0, len(seq2) - win + 1):
-		reads = seq2[i:i+win]
-		for j in kd_Calc(reads):
-			if j >= limit:
-				alpha = True
-	return alpha
+		window = seq2[i:i+win]
+		kd = kd_Calc(window)
+		if kd >= limit and "P" not in window:
+			return True
+	return False
 
 for line, seq2 in mcb185.read_fasta(sys.argv[1]):
-	if hydro_Alpha_Helix(seq2[:30], 8, 2.5) == True and hydro_Alpha_Helix(seq2[30:], 11, 2.0) == True:
+	if hydro_Alpha_Helix(seq2[:30], 8, 2.5) and hydro_Alpha_Helix(seq2[30:], 11, 2.0):
 		print(line)
 
 """
