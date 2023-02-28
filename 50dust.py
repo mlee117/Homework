@@ -15,6 +15,8 @@
 
 # Hint: make a smaller file for testing (e.g. e.coli.fna in the CLI below)
 
+#!/usr/bin/env python3
+
 import mcb185
 import math
 import argparse
