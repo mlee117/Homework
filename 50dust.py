@@ -30,10 +30,10 @@ def entropyCalc(p):
 
 
 def nucleoEnt(seq):
-	a_Comp = (seq.count("A") + seq.count("a")) / len(seq)
-	t_Comp = (seq.count("T") + seq.count("t")) / len(seq)
-	c_Comp = (seq.count("C") + seq.count("c")) / len(seq)
-	g_Comp = (seq.count("G") + seq.count("g")) / len(seq)
+	a_Comp = seq.count("A") / len(seq)
+	t_Comp = seq.count("T") / len(seq)
+	c_Comp = seq.count("C") / len(seq)
+	g_Comp = seq.count("G") / len(seq)
 
 	return entropyCalc([a_Comp, t_Comp, c_Comp, g_Comp])
 
