@@ -51,7 +51,6 @@ arg = parser.parse_args()
 
 for defline, seq in mcb185.read_fasta(arg.file):
 	print(f'>{defline}')
-	seq = seq.upper()
 	characterCount = 0
 	isBad = 0
 	for i in range(len(seq) - arg.w + 1):
