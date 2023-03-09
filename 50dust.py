@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # 50dust.py
 
 # Write a better version of your 42dust.py program
@@ -14,8 +15,6 @@
 # Optional: benchmark your programs with different window sizes using time
 
 # Hint: make a smaller file for testing (e.g. e.coli.fna in the CLI below)
-
-#!/usr/bin/env python3
 
 import mcb185
 import math
