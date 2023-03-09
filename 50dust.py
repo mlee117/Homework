@@ -31,10 +31,10 @@ def entropyCalc(p):
 
 
 def nucleoEnt(seq):
-	a_Comp = (seq.count("A") + seq.count("a")) / len(seq)
-	t_Comp = (seq.count("T") + seq.count("t")) / len(seq)
-	c_Comp = (seq.count("C") + seq.count("c")) / len(seq)
-	g_Comp = (seq.count("G") + seq.count("g")) / len(seq)
+	a_Comp = seq.count("A") / len(seq)
+	t_Comp = seq.count("T") / len(seq)
+	c_Comp = seq.count("C") / len(seq)
+	g_Comp = seq.count("G") / len(seq)
 
 	return entropyCalc([a_Comp, t_Comp, c_Comp, g_Comp])
 
@@ -50,16 +50,26 @@ arg = parser.parse_args()
 
 for defline, seq in mcb185.read_fasta(arg.file):
 	print(f'>{defline}')
+	seq = seq.upper()
 	characterCount = 0
 	isBad = 0
-	for i in range(len(seq) - arg.w + 1):
+	for i in range(len(seq)):
 		characterCount += 1
-		if nucleoEnt(seq[i:i + arg.w]) < arg.t:
-			if arg.s:
-				print(seq[i].lower(), end='')
+		if characterCount < len(seq) - arg.w + 1:
+			if nucleoEnt(seq[i:i + arg.w]) < arg.t:
+				if arg.s:
+					print(seq[i].lower(), end='')
+				else:
+					print("N", end='')
+				isBad = arg.w - 1
+			elif isBad > 0:
+				if arg.s:
+					print(seq[i].lower(), end='')
+				else:
+					print("N", end='')
+				isBad -= 1
 			else:
-				print("N", end='')
-			isBad = arg.w - 1
+				print(seq[i], end='')
 		elif isBad > 0:
 			if arg.s:
 				print(seq[i].lower(), end='')
@@ -70,6 +80,7 @@ for defline, seq in mcb185.read_fasta(arg.file):
 			print(seq[i], end='')
 		if characterCount % 60 == 0:
 			print('\n', end='')
+	print('\n', end="")
 
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
