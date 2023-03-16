@@ -18,7 +18,7 @@
 
 import mcb185
 
-def translate(seq, frame=1):
+def translate(seq, frame=0):
 	gcode = {
 		'AAA' : 'K',	'AAC' : 'N',	'AAG' : 'K',	'AAT' : 'N',
 		'ACA' : 'T',	'ACC' : 'T',	'ACG' : 'T',	'ACT' : 'T',
